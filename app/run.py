@@ -1,6 +1,7 @@
 from ingest_layer.parser import *
+from interface.Simulation.sim_main import *
 
-filepath_for_test = "app/data/QS_BASELINE_30U_2OF6_iteration_4_log(in).csv"
+filepath_for_test = "/Users/noahpointer/SWARM-DT/app/data/QS_BASELINE_30U_2OF6_iteration_4_log(in).csv"
 
 
 def load_sort(file):
@@ -10,9 +11,18 @@ def load_sort(file):
     print("parse complete")
 
 
-if __name__ == "__main__":
 
+def run():
     load_sort(filepath_for_test)
-    
+    from interface.Simulation.sim_main import SimulationWidget
+    from PyQt6.QtWidgets import QApplication
+    import sys
 
-    print(unit_data["5"])
+    app = QApplication(sys.argv)
+    window = SimulationWidget()
+    window.show()
+    sys.exit(app.exec())
+
+
+
+run()
